@@ -19,6 +19,7 @@ body{
   margin-top: 10px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
   margin-bottom: 22px;
+  overflow: auto;
 }
 
 .container .text{
@@ -28,7 +29,6 @@ body{
 }
 .container form{
   margin-top: -20px;
-  overflow: auto;
 }
 .container form .data{
   height: 40px;
