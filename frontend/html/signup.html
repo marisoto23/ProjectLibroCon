@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="/frontend/styles/signup.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 </head>
 
 <body>
@@ -13,7 +14,7 @@
             <div class="text">
                 Registro
             </div>
-            <form action="#">
+            <form action="#" id="form">
                 <div class="data">
                     <label>Nombre</label>
                     <input type="text" id="txtNombre" required>
@@ -36,7 +37,7 @@
                 </div>
                 <div class="btn">
                     <div class="inner"></div>
-                    <button type="submit">Registrar</button>
+                    <button type="submit" id="btnRegistrar">Registrar</button>
                 </div>
             </form>
         </div>
@@ -44,6 +45,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-firestore.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="/db/config.js"></script>
     <script src="/frontend/js/signup.js"></script>
 </body>
