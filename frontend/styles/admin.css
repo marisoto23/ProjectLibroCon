@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+body{
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+}
+.container{
+  margin: 0 auto;
+  background: #fff;
+  width: 100px;
+  padding: 30px;
+  margin-top: 10px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin-bottom: 22px;
+}
+
+.container .text{
+  font-size: 35px;
+  font-weight: 500;
+  text-align: center;
+}
+.container form{
+  margin-top: -20px;
+}
+.container form .data{
+  height: 40px;
+  width: 100%;
+  margin: 22.5px 0;
+}
+form .data label{
+  font-size: 18px;
+}
+form .data input{
+  height: 75%;
+  width: 100%;
+  padding-left: 10px;
+  font-size: 17px;
+  border: 1px solid silver;
+}
+form .data input:focus{
+  border-color: #3498db;
+  border-bottom-width: 2px;
+}
+form .forgot-pass{
+  margin-top: -8px;
+}
+form .forgot-pass a{
+  color: #3498db;
+  text-decoration: none;
+}
+form .forgot-pass a:hover{
+  text-decoration: underline;
+}
+form .btn{
+  margin-top: 25px;
+  height: 45px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+form .btn button{
+  height: 100%;
+  width: 75%;
+  background: #9f01ea;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
