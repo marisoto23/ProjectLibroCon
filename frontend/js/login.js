@@ -25,12 +25,13 @@ function Login() {
   onFindAll((query) => {
     query.forEach((doc) => {
       //Variables DB
+      console.log(doc.data().username)
       var usuarioDB = doc.data().username;
       var contraseniaDB = doc.data().password;
       //Validacion Login
       if ((usuario != "") & (contrasenia != "")) {
         if ((usuarioDB === usuario) & (contraseniaDB === contrasenia)) {
-          console.log("Ingreso correctamente");
+          console.log(doc.data().username);
           window.location.replace(
             "http://127.0.0.1:5500/frontend/html/paginaPrincipal.html"
           );
