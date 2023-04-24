@@ -12,12 +12,13 @@ var editStatus = false;
 var idSeleccionado = "";
 
 /* 3. METODOS CRUD NECESARIO */
-const onInsert = (titulo, descripcion, precio) => {
+const onInsert = (titulo, descripcion, precio, url) => {
     db.collection(coleccionInventario).doc().set(
         {
             titulo,
             descripcion,
-            precio
+            precio,
+            url
         }
     );
 }
@@ -85,6 +86,7 @@ window.addEventListener("load", async ()=>{ //al cargar la pagina
                     form.txtTitulo.value = InventarioSeleccionada.titulo;
                     form.txtDescripcion.value = InventarioSeleccionada.descripcion;
                     form.txtPrecio.value = InventarioSeleccionada.precio;
+                    form.txtUrl.value = InventarioSeleccionada.url;
                     form.btnGuardar.innerText = "Modificar";
 
                     editStatus = true;
@@ -105,10 +107,11 @@ form.addEventListener("submit", async (ev)=>{
     let titulo = form.txtTitulo.value;
     let descripcion = form.txtDescripcion.value;
     let precio = form.txtPrecio.value;
+    let url = form.txtUrl.value;
 
     try{
         if(!editStatus){
-            await onInsert(titulo, descripcion, precio)
+            await onInsert(titulo, descripcion, precio, url)
             Toastify({
                 text: "Libro almacenado correctamente",
                 className: "info",
