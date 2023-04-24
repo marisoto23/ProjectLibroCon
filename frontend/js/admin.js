@@ -22,8 +22,6 @@ const onDelete = (paramId) => db.collection(coleccionUsuario).doc(paramId).delet
 
 const onUpdate = (paramId, newUsuario) => db.collection(coleccionUsuario).doc(paramId).update(newUsuario);
 
-
-
 /* 4. USO METODOS */
 window.addEventListener("load", async ()=>{ //al cargar la pagina
     onFindAll((query)=>{ //carga todo lo que hay en la db

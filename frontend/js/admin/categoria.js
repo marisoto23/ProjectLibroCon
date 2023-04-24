@@ -136,10 +136,6 @@ formCategoria.addEventListener("submit", async (ev)=>{
     }
 })
 
-function limpiar() {
-    editStatus = false;
-    idSeleccionado = "";
-    formCategoria.btnGuardar.innerText = "Guardar";
-  
-    formCategoria.reset();
-  }
+function limpiar (){
+    form.reset();
+}

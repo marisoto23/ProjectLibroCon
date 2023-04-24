@@ -43,7 +43,6 @@ form .data input{
   width: 100%;
   padding-left: 10px;
   font-size: 17px;
-  border: 1px solid silver;
 }
 form .data input:focus{
   border-color: #3498db;
