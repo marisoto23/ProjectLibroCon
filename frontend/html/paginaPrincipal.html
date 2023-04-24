@@ -20,58 +20,20 @@
       <div class="text">
         Menú Principal
       </div>
-      <h4>Panel de modificaciones</h4>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item active" aria-current="page">Inicio</li>
-          <li class="breadcrumb-item"><a href="#">Tienda</a></li>
-          <li class="breadcrumb-item"><a href="#">Compra y Venta</a></li>
-          <li class="breadcrumb-item"><a href="#">Acerca de</a></li>
-          <li class="breadcrumb-item"><a href="#">Contacto</a></li>
-          <li class="breadcrumb-item"><a href="#"><i class="fa-solid fa-cart-plus"></i></a></li>
-        </ol>
-      </nav>
-      <div class="d-flex flex-row mb-3">
+      <div class="mx-auto d-block">
         <div class="p-3">
-          <form action="#" id="form">
-            <div class="data">
-              <label>Nombre</label>
-              <input type="text" id="txtNombre" required>
-            </div>
-            <div class="data">
-              <label>Usuario</label>
-              <input type="text" id="txtUsuario" required>
-            </div>
-            <div class="data">
-              <label>Teléfono</label>
-              <input type="text" id="txtTelefono" required>
-            </div>
-            <div class="data">
-              <label>Correo electrónico</label>
-              <input type="text" id="txtEmail" required>
-            </div>
-            <div class="data">
-              <label>Contraseña</label>
-              <input type="password" id="txtPassword" required>
-            </div>
-            <div class="btn">
-              <div class="inner"></div>
-              <button type="submit" id="btnModificar">Modificar</button>
-            </div>
-          </form>
+          <img id="img" src="/frontend/img/icon.png" alt="" class="img-thumbnail rounded mx-auto d-block">
         </div>
-        <div class="p-3">
-          <table id="tblDatos" class="table table-striped">
-            <thead>
-              <th>Nombre</th>
-              <th>Usuario</th>
-              <th>Teléfono</th>
-              <th>Correo</th>
-              <th></th>
-              <th></th>
-            </thead>
-            <tbody></tbody>
-          </table>
+        <div class="d-flex flex-row ">
+          <p class="p-2 mx-auto d-block"><i class="fa-solid fa-check" style="color: #52ea1a;"></i> Para llevar</p>
+          <p class="p-2 mx-auto d-block"><i class="fa-solid fa-check" style="color: #52ea1a;"></i> A domicilio</p>
+        </div>
+        <div class="d-grid gap-2 col-6 mx-auto">
+          <form action="">
+            
+          </form>
+          <button class="btn btn-success" type="button" onclick="Menu()">Menú Principal</button>
+          <button class="btn btn-info" type="button" id="btnWhatsapp">Whatsapp</button>
         </div>
       </div>
     </div>
