@@ -28,42 +28,33 @@
                     <li class="breadcrumb-item"><a href="/frontend/html/admin/ordenes.html">Ordenes</a></li>
                 </ol>
             </nav>
-            <div class="d-flex flex-row mb-3">
+            <div>
                 <div class="p-3">
-                    <form action="#" id="form">
+                    <form action="#" id="form" class="d-flex flex-column mb-6">
                         <div class="data">
-                            <label>Nombre</label>
-                            <input type="text" id="txtNombre" required>
+                            <label>Titulo del Libro</label>
+                            <input type="text" id="txtTitulo" required>
+                        </div>
+                        <div class="data ">
+                            <label>Descripción de la Categoría</label>
+                            <textarea id="txtDescripcion" class="form-control" aria-label="With textarea"></textarea>
                         </div>
                         <div class="data">
-                            <label>Usuario</label>
-                            <input type="text" id="txtUsuario" required>
+                            <label>Precio Unitario</label>
+                            <input type="text" id="txtPrecio" required>
                         </div>
-                        <div class="data">
-                            <label>Teléfono</label>
-                            <input type="text" id="txtTelefono" required>
-                        </div>
-                        <div class="data">
-                            <label>Correo electrónico</label>
-                            <input type="text" id="txtEmail" required>
-                        </div>
-                        <div class="data">
-                            <label>Contraseña</label>
-                            <input type="password" id="txtPassword" required>
-                        </div>
-                        <div class="btn">
+                        <div class="boton">
                             <div class="inner"></div>
-                            <button type="submit" id="btnModificar">Modificar</button>
+                            <button type="submit" id="btnGuardar" class="btn btn-success">Crear</button>
                         </div>
                     </form>
                 </div>
                 <div class="p-3">
                     <table id="tblDatos" class="table table-striped">
                         <thead>
-                            <th>Nombre</th>
-                            <th>Usuario</th>
-                            <th>Teléfono</th>
-                            <th>Correo</th>
+                            <th>Titulo</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
                             <th></th>
                             <th></th>
                         </thead>
