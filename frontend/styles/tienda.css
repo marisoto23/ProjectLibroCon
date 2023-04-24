@@ -23,59 +23,11 @@ body{
 }
 
 .container .text{
-  font-size: 35px;
+  font-size: 25px;
   font-weight: 500;
   text-align: center;
 }
-.container form{
-  margin-top: -20px;
-}
-.container form .data{
-  height: 40px;
-  width: 100%;
-  margin: 22.5px 0;
-}
-form .data label{
-  font-size: 18px;
-}
-form .data input{
-  height: 75%;
-  width: 100%;
-  padding-left: 10px;
-  font-size: 17px;
-  border: 1px solid silver;
-}
-form .data input:focus{
-  border-color: #3498db;
-  border-bottom-width: 2px;
-}
-form .forgot-pass{
-  margin-top: -8px;
-}
-form .forgot-pass a{
-  color: #3498db;
-  text-decoration: none;
-}
-form .forgot-pass a:hover{
-  text-decoration: underline;
-}
-form .btn{
-  margin-top: 25px;
-  height: 45px;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-}
 
-form .btn button{
-  height: 100%;
-  width: 75%;
-  background: #9f01ea;
-  border: none;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
+.container .parrafo{
+    font-size: 15px;
 }
