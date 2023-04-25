@@ -33,7 +33,7 @@ function Login() {
         if ((usuarioDB === usuario) & (contraseniaDB === contrasenia)) {
           console.log(doc.data().username);
           window.location.replace(
-            "http://127.0.0.1:5500/frontend/html/paginaPrincipal.html"
+            "http://127.0.0.1:5500/frontend/html/chat.html"
           );
         }
         //Para hacer config de Admin

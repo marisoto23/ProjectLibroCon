@@ -7,6 +7,7 @@ const db = firebase.firestore(); //se crea el obj para entrar a la bd
 const card = document.querySelector("#card");
 const span = document.querySelector("#total");
 const carritoUl = document.querySelector("#carrito");
+const modalbody = document.querySelector("#modalbody");
 var carrito = [];
 
 const coleccionInventario = "Inventario";
@@ -22,6 +23,9 @@ const findById = (paramId) =>
 
 const onFindAll = (callback) =>
   db.collection(coleccionInventario).onSnapshot(callback);
+
+/* CONFIG COLECCION ORDENES */
+const coleccionOrden = "Ordenes";
 
 /* 4. USO METODOS */
 window.addEventListener("load", async () => {
@@ -63,7 +67,30 @@ window.addEventListener("load", async () => {
 
           for (let InventarioSeleccionada of carrito) {
             carritoUl.innerHTML += `<li>${InventarioSeleccionada.titulo} - Precio: ${InventarioSeleccionada.precio}</li>`;
+            console.log(carrito)
           }
+          //var precio = InventarioSeleccionada.precio;
+        } catch (err) {
+          console.log("Error: ", err);
+        }
+      });
+    });
+
+    const btnPagar = document.querySelectorAll(".btnPagar");
+    btnPagar.forEach((btn) => {
+      btn.addEventListener("click", async (ev) => {
+        //console.log(ev);
+        try {
+          const docSeleccionado = await findById(ev.target.dataset.id);
+          const InventarioSeleccionada = docSeleccionado.data();
+
+          idSeleccionado = docSeleccionado.id;
+
+          console.log(InventarioSeleccionada);
+
+          /*for (let InventarioSeleccionada of carrito)
+            modalbody.innerHTML += `<p>${InventarioSeleccionada.titulo}</p>`;
+*/
           //var precio = InventarioSeleccionada.precio;
         } catch (err) {
           console.log("Error: ", err);
