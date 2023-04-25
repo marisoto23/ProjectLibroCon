@@ -16,23 +16,36 @@
 
 <body>
   <div class="center">
-    <div class="container">
-      <div class="text">
-        Menú Principal
-      </div>
-      <h4>Panel de modificaciones</h4>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item "><a href="/frontend/html/paginaPrincipal.html">Inicio</a></li>
-          <li class="breadcrumb-item active" aria-current="page">Tienda</li>
-          <li class="breadcrumb-item"><a href="#">Compra y Venta</a></li>
-          <li class="breadcrumb-item"><a href="#">Acerca de</a></li>
-          <li class="breadcrumb-item"><a href="#">Contacto</a></li>
-          <li class="breadcrumb-item"><a href="#"><i class="fa-solid fa-cart-plus"></i></a></li>
-        </ol>
-      </nav>
-      <div class="d-flex justify-content-around parrafo" id="card">
-      </div>
+    <div class="d-flex flex-row mb-3">
+        <div class="container">
+            <div class="text">
+              Menú Principal
+            </div>
+            <h4>¡Bienvenidx! <i class="fa-regular fa-face-laugh-wink fa-fade" style="color: #5c13a4;"></i></h4>
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item "><a href="/frontend/html/paginaPrincipal.html">Inicio</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Tienda</li>
+                <li class="breadcrumb-item"><a href="/frontend/html/chat.html">Compra y Venta</a></li>
+                <li class="breadcrumb-item"><a href="#">Acerca de</a></li>
+                <li class="breadcrumb-item"><a href="/frontend/html/contacto.html">Contacto</a></li>
+              </ol>
+            </nav>
+            <div class="d-flex flex-row mb-3 contenedor">
+                <div class="row parrafo" id="card">
+                </div>
+                <aside class="col-sm-4">
+                    <h2>Carrito</h2>
+                    <!-- Elementos del carrito -->
+                    <ul id="carrito" class="list-group">
+                    </ul>
+                    <hr>
+                    <!-- Precio total -->
+                    <p class="text-right">Total: ₡<span id="total"></span></p>
+                    <button id="boton-vaciar" class="btn btn-danger" onclick="vaciarCarrito()">Vaciar</button>
+                </aside>
+            </div>
+          </div>
     </div>
   </div>
   <script src="https://www.gstatic.com/firebasejs/8.4.3/firebase-app.js"></script>
