@@ -1,41 +1,39 @@
-document.getElementById('contactForm').addEventListener('submit', function (e) {
-    e.preventDefault();
-    
-    // Get form data
-    const nombre = document.getElementById('txtNombre').value;
-    const telefono = document.getElementById('txtTelefono').value;
-    const email = document.getElementById('txtEmail').value;
-    
-    // Process form data (e.g., send it to your backend, log it, etc.)
-    console.log(`Nombre: ${nombre}\nTelefono: ${telefono}\nEmail: ${email}`);
-  });
+"use strict"
 
+const db = firebase.firestore();
+const formContacto = document.querySelector("#form");
+const coleccionContacto = "Contacto";
 
-document.getElementById("btnGuardar").addEventListener("click", function(event) {
-    event.preventDefault();
-    saveContactData();
-  });
+const onInsertContacto = (nombre, email, telefono) => {
+    db.collection(coleccionContacto).doc().set({
+      nombre,
+      email,
+      telefono,
+    });
+};
+
+formContacto.addEventListener("submit", async (ev) => {
+    ev.preventDefault();
+    let nombre = formContacto.txtNombre.value;
+    let email = formContacto.txtEmail.value;
+    let telefono = formContacto.txtTelefono.value;
   
-  function saveContactData() {
-    const nombre = document.getElementById("txtNombre").value;
-    const telefono = document.getElementById("txtTelefono").value;
-    const email = document.getElementById("txtEmail").value;
-  
-    if (nombre !== "" && telefono !== "" && email !== "") {
-      // Change button text and style
-      const button = document.getElementById("btnGuardar");
-      button.textContent = "Guardado";
-      button.classList.add("btn-saved");
-  
-      // Reset the button after a delay
-      setTimeout(() => {
-        button.textContent = "Guardar";
-        button.classList.remove("btn-saved");
-      }, 2000);
-  
-      // Reset form
-      document.getElementById("contactoForm").reset();
+    try {
+        await onInsertContacto(nombre, email, telefono);
+        Toastify({
+          text: "Datos de contacto enviados correctamente",
+          className: "info",
+          style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+          duration: 3000,
+        }).showToast();
+        limpiar();
+    } catch (err) {
+      console.log("Error Guardar: ", err);
     }
-  }
-  
-  
+});
+
+function limpiar() {
+    formContacto.reset();
+}
