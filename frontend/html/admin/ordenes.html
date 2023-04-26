@@ -32,16 +32,24 @@
                 <div class="p-3">
                     <form action="#" id="form" class="d-flex flex-column mb-6">
                         <div class="data">
-                            <label>Titulo del Libro</label>
-                            <input type="text" id="txtTitulo" required>
-                        </div>
-                        <div class="data ">
-                            <label>Descripción de la Categoría</label>
-                            <textarea id="txtDescripcion" class="form-control" aria-label="With textarea"></textarea>
+                            <label>Nombre completo del cliente</label>
+                            <input type="text" id="txtUsuario" required>
                         </div>
                         <div class="data">
-                            <label>Precio Unitario</label>
-                            <input type="text" id="txtPrecio" required>
+                            <label>Telefono</label>
+                            <input type="text" id="txtTelefono" required>
+                        </div>
+                        <div class="data ">
+                            <label>Fecha de Orden</label>
+                            <input type="date" id="txtFecha" required>
+                        </div>
+                        <div class="data">
+                            <label>Tipo de entrega</label>
+                            <input type="text" id="txtEntrega" required>
+                        </div>
+                        <div class="data">
+                            <label>Total</label>
+                            <input type="text" id="txtTotal" required>
                         </div>
                         <div class="boton">
                             <div class="inner"></div>
@@ -52,9 +60,11 @@
                 <div class="p-3">
                     <table id="tblDatos" class="table table-striped">
                         <thead>
-                            <th>Titulo</th>
-                            <th>Descripción</th>
-                            <th>Precio</th>
+                            <th>Cliente</th>
+                            <th>Telefono</th>
+                            <th>Fecha</th>
+                            <th>Tipo de Entrega</th>
+                            <th>Total</th>
                             <th></th>
                             <th></th>
                         </thead>
