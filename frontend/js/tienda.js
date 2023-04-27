@@ -8,9 +8,12 @@ const card = document.querySelector("#card");
 const span = document.querySelector("#total");
 const carritoUl = document.querySelector("#carrito");
 const modalbody = document.querySelector("#modalbody");
+const form = document.querySelector("#form");
+const btnEnviar = document.querySelector("#btnEnviar");
 var carrito = [];
 
 const coleccionInventario = "Inventario";
+const coleccionOrden = "Ordenes";
 var editStatus = false;
 var idSeleccionado = "";
 
@@ -24,8 +27,15 @@ const findById = (paramId) =>
 const onFindAll = (callback) =>
   db.collection(coleccionInventario).onSnapshot(callback);
 
-/* CONFIG COLECCION ORDENES */
-const coleccionOrden = "Ordenes";
+const onInsert = (usuario, telefono, entrega, libro, total) => {
+  db.collection(coleccionOrden).doc().set({
+    usuario,
+    telefono,
+    entrega,
+    libro,
+    total,
+  });
+};
 
 /* 4. USO METODOS */
 window.addEventListener("load", async () => {
@@ -67,31 +77,71 @@ window.addEventListener("load", async () => {
 
           for (let InventarioSeleccionada of carrito) {
             carritoUl.innerHTML += `<li>${InventarioSeleccionada.titulo} - Precio: ${InventarioSeleccionada.precio}</li>`;
-            console.log(carrito)
+            span.innerHTML += `<p>${InventarioSeleccionada.precio}</p>`;
+            console.log(carrito);
           }
-          //var precio = InventarioSeleccionada.precio;
-        } catch (err) {
-          console.log("Error: ", err);
-        }
-      });
-    });
+          const btnPagar = document.querySelectorAll(".btnPagar");
+          btnPagar.forEach((btn) => {
+            btn.addEventListener("click", async (ev) => {
+              var txtUsuario = document.querySelector("#txtUsuario");
+              var txtTelefono = document.querySelector("#txtTelefono");
+              var txtEntrega = document.querySelector("#txtEntrega");
 
-    const btnPagar = document.querySelectorAll(".btnPagar");
-    btnPagar.forEach((btn) => {
-      btn.addEventListener("click", async (ev) => {
-        //console.log(ev);
-        try {
-          const docSeleccionado = await findById(ev.target.dataset.id);
-          const InventarioSeleccionada = docSeleccionado.data();
+              txtUsuario = form.txtUsuario.value;
+              txtTelefono = form.txtTelefono.value;
+              txtEntrega = form.txtEntrega.value;
 
-          idSeleccionado = docSeleccionado.id;
+              console.log("Usuario" + txtUsuario);
+              modalbody.innerHTML += `
+                        <p>Nombre del Cliente: ${txtUsuario}</p>
+                        <p>Telefono: ${txtTelefono}</p>
+                        <p>Tipo de Entrega: ${txtEntrega}</p>
+                        <p>Titulo de la obra: ${InventarioSeleccionada.titulo}</p>
+                        <p>Total: ${InventarioSeleccionada.precio}</p>
+                        <br/>
+                                          `;
 
-          console.log(InventarioSeleccionada);
+              const btnEnviar = document.querySelectorAll(".btnEnviar");
+              btnEnviar.forEach((btn) => {
+                btn.addEventListener("click", async (ev) => {
+                  ev.preventDefault();
+                  //CARGAR EN VARIABLES LO QUE DA EL FORM
+                  let usuario = form.txtUsuario.value;
+                  let telefono = form.txtTelefono.value;
+                  let entrega = form.txtEntrega.value;
+                  let libro = InventarioSeleccionada.titulo;
+                  let precio = InventarioSeleccionada.precio;
 
-          /*for (let InventarioSeleccionada of carrito)
-            modalbody.innerHTML += `<p>${InventarioSeleccionada.titulo}</p>`;
-*/
-          //var precio = InventarioSeleccionada.precio;
+                  try {
+                    if (editStatus) {
+                      await onInsert(usuario, telefono, entrega, libro, precio);
+                      Toastify({
+                        text: "Orden almacenado correctamente",
+                        className: "info",
+                        style: {
+                          background:
+                            "linear-gradient(to right, #00b09b, #96c93d)",
+                        },
+                        duration: 3000,
+                      }).showToast();
+                      var number = +506895917;
+                      var message = modalbody;
+                      var url =
+                        "whatsapp://send?text=" +
+                        encodeURIComponent(message) +
+                        "&phone=" +
+                        encodeURIComponent(number);
+
+                      window.open(url);
+                    }
+                  } catch (err) {
+                    console.log("Error Guardar: ", err);
+                  }
+                });
+              });
+              //console.log(carrito);
+            });
+          });
         } catch (err) {
           console.log("Error: ", err);
         }
@@ -99,17 +149,3 @@ window.addEventListener("load", async () => {
     });
   });
 });
-//renderizarCarrito();
-function calcularTotal() {
-  // Recorremos el array del carrito
-  return carrito
-    .reduce((total, item) => {
-      // De cada elemento obtenemos su precio
-      const miItem = baseDeDatos.filter((itemBaseDatos) => {
-        return itemBaseDatos.id === parseInt(item);
-      });
-      // Los sumamos al total
-      return total + miItem[0].precio;
-    }, 0)
-    .toFixed(2);
-}

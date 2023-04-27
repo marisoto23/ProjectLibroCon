@@ -36,6 +36,21 @@
           </div>
           <aside class="col-sm-4">
             <h2>Carrito</h2>
+            <p class="text-right">Antes de pagar rellene la siguiente información: </p>
+            <form action="#" id="form" class="d-flex flex-column mb-6">
+              <div class="data">
+                <label>Nombre completo del cliente</label>
+                <input type="text" id="txtUsuario" required>
+              </div>
+              <div class="data">
+                <label>Telefono</label>
+                <input type="text" id="txtTelefono" required>
+              </div>
+              <div class="data">
+                <label>Tipo de entrega</label>
+                <input type="text" id="txtEntrega" required>
+              </div>
+            </form>
             <!-- Elementos del carrito -->
             <ul id="carrito" class="list-group">
             </ul>
@@ -44,21 +59,21 @@
             <p class="text-right">Total: ₡<span id="total"></span></p>
             <!-- Boton Modal -->
             <button class="btn btn-success btnPagar" data-bs-toggle="modal"
-              data-bs-target="#exampleModal">Pagar</button>
+            data-bs-target="#exampleModal">Aceptar</button>
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
               aria-hidden="true">
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Orden</h1>
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Factura de la Orden</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body" id="modalbody">
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Enviar</button>
+                    <button type="button" class="btn btn-primary btnEnviar">Enviar</button>
                   </div>
                 </div>
               </div>
