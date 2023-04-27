@@ -83,6 +83,7 @@ window.addEventListener("load", async () => {
           const btnPagar = document.querySelectorAll(".btnPagar");
           btnPagar.forEach((btn) => {
             btn.addEventListener("click", async (ev) => {
+              try {
               var txtUsuario = document.querySelector("#txtUsuario");
               var txtTelefono = document.querySelector("#txtTelefono");
               var txtEntrega = document.querySelector("#txtEntrega");
@@ -106,14 +107,16 @@ window.addEventListener("load", async () => {
                 btn.addEventListener("click", async (ev) => {
                   ev.preventDefault();
                   //CARGAR EN VARIABLES LO QUE DA EL FORM
-                  let usuario = form.txtUsuario.value;
-                  let telefono = form.txtTelefono.value;
-                  let entrega = form.txtEntrega.value;
-                  let libro = InventarioSeleccionada.titulo;
-                  let precio = InventarioSeleccionada.precio;
+                  var usuario = document.querySelector("#txtUsuario").value;
+                  var telefono = document.querySelector("#txtTelefono").value;;
+                  var entrega = document.querySelector("#txtEntrega").value;;
+                  var libro = InventarioSeleccionada.titulo;
+                  var precio = InventarioSeleccionada.precio;
+
+                  console.log(txtUsuario, telefono, entrega, libro, precio)
 
                   try {
-                    if (editStatus) {
+                    if (!editStatus) {
                       await onInsert(usuario, telefono, entrega, libro, precio);
                       Toastify({
                         text: "Orden almacenado correctamente",
@@ -124,7 +127,7 @@ window.addEventListener("load", async () => {
                         },
                         duration: 3000,
                       }).showToast();
-                      var number = +506895917;
+                      var number = +50689765917;
                       var message = modalbody;
                       var url =
                         "whatsapp://send?text=" +
@@ -139,6 +142,9 @@ window.addEventListener("load", async () => {
                   }
                 });
               });
+              } catch (err) {
+                console.log("Error: ", err);
+              }
               //console.log(carrito);
             });
           });

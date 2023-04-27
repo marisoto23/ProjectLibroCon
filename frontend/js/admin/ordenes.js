@@ -12,15 +12,6 @@ var editStatus = false;
 var idSeleccionado = "";
 
 /* 3. METODOS CRUD NECESARIO */
-const onInsert = (usuario, telefono, fecha, entrega, total) => {
-  db.collection(coleccionOrden).doc().set({
-    usuario,
-    telefono,
-    fecha,
-    entrega,
-    total,
-  });
-};
 
 const findAll = () => db.collection(coleccionOrden).get();
 
@@ -50,8 +41,8 @@ window.addEventListener("load", async () => {
                                     <tr>
                                         <td>${dato.usuario}</td>
                                         <td>${dato.telefono}</td>
-                                        <td>${dato.fecha}</td>
                                         <td>${dato.entrega}</td>
+                                        <td>${dato.libro}</td>
                                         <td>${dato.total}</td>
                                         <td>
                                             <button class="btn btn-warning btn-editar" data-id="${doc.id}">Editar</button>
@@ -90,8 +81,8 @@ window.addEventListener("load", async () => {
 
           form.txtUsuario.value = OrdenesSeleccionada.usuario;
           form.txtTelefono.value = OrdenesSeleccionada.telefono;
-          form.txtFecha.value = OrdenesSeleccionada.fecha;
           form.txtEntrega.value = OrdenesSeleccionada.entrega;
+          form.txtLibro.value = OrdenesSeleccionada.libro;
           form.txtTotal.value = OrdenesSeleccionada.total;
           form.btnGuardar.innerText = "Modificar";
 
@@ -111,13 +102,13 @@ form.addEventListener("submit", async (ev) => {
   //CARGAR EN VARIABLES LO QUE DA EL FORM
   let usuario = form.txtUsuario.value;
   let telefono = form.txtTelefono.value;
-  let fecha = form.txtFecha.value;
   let entrega = form.txtEntrega.value;
+  let libro = form.txtLibro.value;
   let total = form.txtTotal.value;
 
   try {
     if (!editStatus) {
-      await onInsert(usuario, telefono, fecha, entrega, total);
+      await onInsert(usuario, telefono, entrega, libro, total);
       Toastify({
         text: "Orden almacenado correctamente",
         className: "info",
@@ -130,8 +121,8 @@ form.addEventListener("submit", async (ev) => {
       await onUpdate(idSeleccionado, {
         usuario,
         telefono,
-        fecha,
         entrega,
+        libro,
         total,
       });
       Toastify({
