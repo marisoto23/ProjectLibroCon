@@ -84,16 +84,16 @@ window.addEventListener("load", async () => {
           btnPagar.forEach((btn) => {
             btn.addEventListener("click", async (ev) => {
               try {
-              var txtUsuario = document.querySelector("#txtUsuario");
-              var txtTelefono = document.querySelector("#txtTelefono");
-              var txtEntrega = document.querySelector("#txtEntrega");
+                var txtUsuario = document.querySelector("#txtUsuario");
+                var txtTelefono = document.querySelector("#txtTelefono");
+                var txtEntrega = document.querySelector("#txtEntrega");
 
-              txtUsuario = form.txtUsuario.value;
-              txtTelefono = form.txtTelefono.value;
-              txtEntrega = form.txtEntrega.value;
+                txtUsuario = form.txtUsuario.value;
+                txtTelefono = form.txtTelefono.value;
+                txtEntrega = form.txtEntrega.value;
 
-              console.log("Usuario" + txtUsuario);
-              modalbody.innerHTML += `
+                console.log("Usuario" + txtUsuario);
+                modalbody.innerHTML += `
                         <p>Nombre del Cliente: ${txtUsuario}</p>
                         <p>Telefono: ${txtTelefono}</p>
                         <p>Tipo de Entrega: ${txtEntrega}</p>
@@ -102,46 +102,59 @@ window.addEventListener("load", async () => {
                         <br/>
                                           `;
 
-              const btnEnviar = document.querySelectorAll(".btnEnviar");
-              btnEnviar.forEach((btn) => {
-                btn.addEventListener("click", async (ev) => {
-                  ev.preventDefault();
-                  //CARGAR EN VARIABLES LO QUE DA EL FORM
-                  var usuario = document.querySelector("#txtUsuario").value;
-                  var telefono = document.querySelector("#txtTelefono").value;;
-                  var entrega = document.querySelector("#txtEntrega").value;;
-                  var libro = InventarioSeleccionada.titulo;
-                  var precio = InventarioSeleccionada.precio;
+                const btnEnviar = document.querySelectorAll(".btnEnviar");
+                btnEnviar.forEach((btn) => {
+                  btn.addEventListener("click", async (ev) => {
+                    ev.preventDefault();
+                    //CARGAR EN VARIABLES LO QUE DA EL FORM
+                    var usuario = document.querySelector("#txtUsuario").value;
+                    var telefono = document.querySelector("#txtTelefono").value;
+                    var entrega = document.querySelector("#txtEntrega").value;
+                    var libro = InventarioSeleccionada.titulo;
+                    var precio = InventarioSeleccionada.precio;
 
-                  console.log(txtUsuario, telefono, entrega, libro, precio)
+                    console.log(txtUsuario, telefono, entrega, libro, precio);
 
-                  try {
-                    if (!editStatus) {
-                      await onInsert(usuario, telefono, entrega, libro, precio);
-                      Toastify({
-                        text: "Orden almacenado correctamente",
-                        className: "info",
-                        style: {
-                          background:
-                            "linear-gradient(to right, #00b09b, #96c93d)",
-                        },
-                        duration: 3000,
-                      }).showToast();
-                      var number = +50689765917;
-                      var message = modalbody;
-                      var url =
-                        "whatsapp://send?text=" +
-                        encodeURIComponent(message) +
-                        "&phone=" +
-                        encodeURIComponent(number);
+                    try {
+                      if (!editStatus) {
+                        await onInsert(
+                          usuario,
+                          telefono,
+                          entrega,
+                          libro,
+                          precio
+                        );
+                        Toastify({
+                          text: "Orden almacenado correctamente",
+                          className: "info",
+                          style: {
+                            background:
+                              "linear-gradient(to right, #00b09b, #96c93d)",
+                          },
+                          duration: 3000,
+                        }).showToast();
+                        var number = +50689765917;
+                        var message = 
+                        `👋 Hola ${usuario}, vengo de Librocon
+                        
+                        Tipo de servicio: ${entrega}
+                        Pedido: ${precio}
+                        Telefono: ${telefono}
 
-                      window.open(url);
+                        👆 Envía este mensaje. Te atenderemos enseguida.`;
+                        var url =
+                          "whatsapp://send?text=" +
+                          encodeURIComponent(message) +
+                          "&phone=" +
+                          encodeURIComponent(number);
+
+                        window.open(url);
+                      }
+                    } catch (err) {
+                      console.log("Error Guardar: ", err);
                     }
-                  } catch (err) {
-                    console.log("Error Guardar: ", err);
-                  }
+                  });
                 });
-              });
               } catch (err) {
                 console.log("Error: ", err);
               }
