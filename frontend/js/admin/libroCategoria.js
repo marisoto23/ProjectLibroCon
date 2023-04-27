@@ -153,6 +153,7 @@ form.addEventListener("submit", async (ev)=>{
                 },
                 duration: 3000,
               }).showToast();
+              limpiar();
             } else {
               await onUpdate(idSeleccionado, {
                 libro,

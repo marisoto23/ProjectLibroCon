@@ -52,8 +52,15 @@ window.addEventListener("load", async ()=>{ //al cargar la pagina
                 
                 //console.log(ev)
                 if(confirm("Desea borrar el registro?")){
-                    await onDelete(ev.target.dataset.id)
-                    alert("Registro borrado exitosamente")
+                    await onDelete(ev.target.dataset.id);
+                    Toastify({
+                      text: "Usuario borrado correctamente",
+                      className: "info",
+                      style: {
+                        background: "linear-gradient(to right, #00b09b, #96c93d)",
+                      },
+                      duration: 3000,
+                    }).showToast();
                 }
             })
         })
@@ -97,7 +104,14 @@ form.addEventListener("submit", async (ev)=>{
     try{
         if(editStatus){
             await onUpdate(idSeleccionado, {nombre, username, telefono, email, password})
-            alert ("Contacto modificado correctamente")
+            Toastify({
+                text: "Usuario modificado correctamente",
+                className: "info",
+                style: {
+                  background: "linear-gradient(to right, #00b09b, #96c93d)",
+                },
+                duration: 3000,
+              }).showToast();
             limpiar();
         }
     }

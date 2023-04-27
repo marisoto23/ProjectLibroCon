@@ -135,7 +135,7 @@ window.addEventListener("load", async () => {
                         }).showToast();
                         var number = +50689765917;
                         var message = 
-                        `👋 Hola ${usuario}, vengo de Librocon
+                        `👋 Hola ${usuario}, bienvenidx a Librocon
                         
                         Tipo de servicio: ${entrega}
                         Pedido: ${precio}
